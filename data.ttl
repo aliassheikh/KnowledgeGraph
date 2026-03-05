@@ -1,0 +1,24 @@
+@prefix ex: <https://yourdomain.example/data#> .
+@prefix exvoc: <https://yourdomain.example/vocab#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+ex:me a exvoc:Student ;
+    foaf:name "Ali" ;
+    exvoc:studentId "1234567" ;
+    exvoc:hasSkill ex:skillBash, ex:skillTS, ex:skillPython ;
+    foaf:knows ex:studentA, ex:studentB .
+
+ex:studentA a exvoc:Student ;
+    foaf:name "Student A" .
+
+ex:studentB a exvoc:Student ;
+    foaf:name "Student B" .
+
+ex:skillBash a exvoc:Skill ;
+    rdfs:label "BASH" .
+
+ex:skillTS a exvoc:Skill ;
+    rdfs:label "TypeScript" .
+
+ex:skillPython a exvoc:Skill ;
+    rdfs:label "Python" .
