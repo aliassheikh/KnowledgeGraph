@@ -1,24 +1,37 @@
-@prefix ex: <https://yourdomain.example/data#> .
-@prefix exvoc: <https://yourdomain.example/vocab#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix exvoc: <https://yourdomain.example/vocab#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix ex: <https://yourdomain.example/data#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
 
-ex:me a exvoc:Student ;
-    foaf:name "Ali" ;
-    exvoc:studentId "1234567" ;
-    exvoc:hasSkill ex:skillBash, ex:skillTS, ex:skillPython ;
-    foaf:knows ex:studentA, ex:studentB .
-
-ex:studentA a exvoc:Student ;
-    foaf:name "Student A" .
-
-ex:studentB a exvoc:Student ;
-    foaf:name "Student B" .
-
-ex:skillBash a exvoc:Skill ;
-    rdfs:label "BASH" .
-
-ex:skillTS a exvoc:Skill ;
-    rdfs:label "TypeScript" .
-
-ex:skillPython a exvoc:Skill ;
-    rdfs:label "Python" .
+exvoc:Student a rdfs:Class;
+    rdfs:label "Student";
+    rdfs:comment "A person enrolled in an educational program.".
+exvoc:Skill a rdfs:Class;
+    rdfs:label "Skill";
+    rdfs:comment "A technical or academic skill.".
+exvoc:hasSkill a owl:ObjectProperty;
+    rdfs:label "has skill";
+    rdfs:comment "Links a student to a skill they possess.";
+    rdfs:domain exvoc:Student;
+    rdfs:range exvoc:Skill.
+exvoc:studentId a owl:DatatypeProperty;
+    rdfs:label "student identifier";
+    rdfs:comment "A unique identifier for a student.";
+    rdfs:domain exvoc:Student;
+    rdfs:range rdfs:Literal.
+ex:me a exvoc:Student;
+    foaf:name "Ali";
+    exvoc:studentId "1234567";
+    exvoc:hasSkill ex:skillBash, ex:skillTS, ex:skillPython;
+    foaf:knows ex:studentA, ex:studentB.
+ex:studentA a exvoc:Student;
+    foaf:name "Student A".
+ex:studentB a exvoc:Student;
+    foaf:name "Student B".
+ex:skillBash a exvoc:Skill;
+    rdfs:label "BASH".
+ex:skillTS a exvoc:Skill;
+    rdfs:label "TypeScript".
+ex:skillPython a exvoc:Skill;
+    rdfs:label "Python".
