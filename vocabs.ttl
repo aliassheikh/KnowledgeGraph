@@ -1,4 +1,4 @@
-@prefix exvoc: <https://yourname.github.io/vocab#> .
+@prefix exvoc: <https://github.com/aliassheikh/KnowledgeGraph/blob/main/vocab#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 
