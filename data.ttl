@@ -1,0 +1,25 @@
+@prefix ex: <https://yourname.github.io/data#> .
+@prefix exvoc: <https://yourname.github.io/vocab#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:me a exvoc:Student ;
+    foaf:name "Ali" ;
+    exvoc:studentId "1234567" ;
+    exvoc:hasSkill ex:skillBash, ex:skillTS, ex:skillPython ;
+    foaf:knows ex:studentA, ex:studentB .
+
+ex:studentA a exvoc:Student ;
+    foaf:name "Student A" .
+
+ex:studentB a exvoc:Student ;
+    foaf:name "Student B" .
+
+ex:skillBash a exvoc:Skill ;
+    rdfs:label "BASH" .
+
+ex:skillTS a exvoc:Skill ;
+    rdfs:label "TypeScript" .
+
+ex:skillPython a exvoc:Skill ;
+    rdfs:label "Python" .
