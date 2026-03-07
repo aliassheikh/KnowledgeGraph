@@ -1,0 +1,25 @@
+@prefix exvoc: <https://yourname.github.io/vocab#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+
+### Classes
+exvoc:Student a rdfs:Class ;
+    rdfs:label "Student" ;
+    rdfs:comment "A person enrolled in an educational program." .
+
+exvoc:Skill a rdfs:Class ;
+    rdfs:label "Skill" ;
+    rdfs:comment "A technical or academic skill." .
+
+### Properties
+exvoc:hasSkill a owl:ObjectProperty ;
+    rdfs:label "has skill" ;
+    rdfs:comment "Links a student to a skill they possess." ;
+    rdfs:domain exvoc:Student ;
+    rdfs:range exvoc:Skill .
+
+exvoc:studentId a owl:DatatypeProperty ;
+    rdfs:label "student identifier" ;
+    rdfs:comment "A unique identifier for a student." ;
+    rdfs:domain exvoc:Student ;
+    rdfs:range rdfs:Literal .
