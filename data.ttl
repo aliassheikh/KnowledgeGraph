@@ -1,5 +1,5 @@
-@prefix ex: <https://yourname.github.io/data#> .
-@prefix exvoc: <https://yourname.github.io/vocab#> .
+@prefix ex: <https://github.com/aliassheikh/KnowledgeGraph/blob/main/data#> .
+@prefix exvoc: <https://github.com/aliassheikh/KnowledgeGraph/blob/main/vocab#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
