@@ -5,7 +5,7 @@
 The following vocabulary was created to describe students, their identifiers, and their skills.
 
 ```ttl
-@prefix exvoc: <https://aliassheikhi.github.io/KnowledgeGraph/vocab#> .
+@prefix exvoc: <https://aliassheikh.github.io/KnowledgeGraph/vocab#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 
@@ -31,18 +31,27 @@ exvoc:studentId a owl:DatatypeProperty ;
     rdfs:domain exvoc:Student ;
     rdfs:range rdfs:Literal .
 
-curl -I https://aliassheikhi.github.io/KnowledgeGraph/data.ttl
+curl -I https://aliassheikh.github.io/KnowledgeGraph/data.ttl
 
 HTTP/2 200 
-date: Thu, 05 Mar 2026 13:35:32 GMT
-content-type: text/html; charset=utf-8
-vary: X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, X-Requested-With, Sec-Fetch-Site,Accept-Encoding, Accept, X-Requested-With
-x-repository-download: git clone https://github.com/aliassheikh/KnowledgeGraph.git
-x-raw-download: https://raw.githubusercontent.com/aliassheikh/KnowledgeGraph/main/data.ttl
-etag: W/"f0606487563f5bd198ec8799eb1982df"
-cache-control: max-age=0, private, must-revalidate
-strict-transport-security: max-age=31536000; includeSubdomains; preload
-x-frame-options: deny
-x-content-type-options: nosniff
-x-xss-protection: 0
-referrer-policy: no-referrer-when-downgrade
+server: GitHub.com
+content-type: text/turtle; charset=utf-8
+last-modified: Sun, 08 Mar 2026 08:24:17 GMT
+access-control-allow-origin: *
+strict-transport-security: max-age=31556952
+etag: "69ad3231-2c8"
+expires: Sun, 08 Mar 2026 08:35:46 GMT
+cache-control: max-age=600
+x-proxy-cache: MISS
+x-github-request-id: 9569:644BE:21FAE35:2263EB7:69AD328A
+accept-ranges: bytes
+age: 0
+date: Sun, 08 Mar 2026 08:25:46 GMT
+via: 1.1 varnish
+x-served-by: cache-ams2100087-AMS
+x-cache: MISS
+x-cache-hits: 0
+x-timer: S1772958347.597178,VS0,VE109
+vary: Accept-Encoding
+x-fastly-request-id: bed67b6fd065aec9290c6b9667228e59346ee081
+content-length: 712
