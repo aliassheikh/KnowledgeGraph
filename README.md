@@ -5,7 +5,7 @@
 The following vocabulary was created to describe students, their identifiers, and their skills.
 
 ```ttl
-@prefix exvoc: <https://github.com/aliassheikh/KnowledgeGraph/blob/main/vocab#> .
+@prefix exvoc: <https://aliassheikhi.github.io/KnowledgeGraph/vocab#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 
@@ -31,7 +31,7 @@ exvoc:studentId a owl:DatatypeProperty ;
     rdfs:domain exvoc:Student ;
     rdfs:range rdfs:Literal .
 
-curl -I https://github.com/aliassheikh/KnowledgeGraph/blob/main/data.ttl
+curl -I https://aliassheikhi.github.io/KnowledgeGraph/data.ttl
 
 HTTP/2 200 
 date: Thu, 05 Mar 2026 13:35:32 GMT
