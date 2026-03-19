@@ -3,6 +3,7 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
+### People
 ex:me a exvoc:Student ;
     foaf:name "Ali" ;
     exvoc:studentId "1234567" ;
@@ -15,6 +16,7 @@ ex:studentA a exvoc:Student ;
 ex:studentB a exvoc:Student ;
     foaf:name "Student B" .
 
+### Skills
 ex:skillBash a exvoc:Skill ;
     rdfs:label "BASH" .
 
@@ -23,3 +25,35 @@ ex:skillTS a exvoc:Skill ;
 
 ex:skillPython a exvoc:Skill ;
     rdfs:label "Python" .
+
+### Locations
+ex:locationAmsterdam a exvoc:Location ;
+    rdfs:label "Amsterdam" .
+
+ex:locationUniversityLibrary a exvoc:Location ;
+    rdfs:label "University Library" .
+
+ex:locationUniversityGarden a exvoc:Location ;
+    rdfs:label "University Garden" .
+
+### Photos
+ex:photoMe a exvoc:Photo ;
+    exvoc:title "Profile Photo of Ali" ;
+    exvoc:hasPhotographer ex:studentA ;
+    exvoc:depicts ex:me ;
+    exvoc:takenAt ex:locationAmsterdam ;
+    exvoc:description "A personal profile photo of Ali, taken in Amsterdam." .
+
+ex:photoGroupStudy a exvoc:Photo ;
+    exvoc:title "Group Study Session" ;
+    exvoc:hasPhotographer ex:studentA ;
+    exvoc:depicts ex:me, ex:studentA, ex:studentB ;
+    exvoc:takenAt ex:locationUniversityLibrary ;
+    exvoc:description "A photo of Ali, Student A and Student B studying together at the university library." .
+
+ex:photoCampus a exvoc:Photo ;
+    exvoc:title "Campus Walk" ;
+    exvoc:hasPhotographer ex:studentB ;
+    exvoc:depicts ex:me, ex:studentB ;
+    exvoc:takenAt ex:locationUniversityGarden ;
+    exvoc:description "A photo of Ali and Student B walking in the university garden." .

@@ -1,0 +1,19 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+# Part 3: Reasoning over data using only FOAF ontology.
+#
+# Because exvoc:Photo rdfs:subClassOf foaf:Image and
+# exvoc:depicts rdfs:subPropertyOf foaf:depicts, the EYE reasoner
+# (with RDFS rules) infers that all exvoc:Photo instances are also
+# foaf:Image instances and all exvoc:depicts triples are also
+# foaf:depicts triples. This query therefore retrieves photos and
+# depicted persons using FOAF terms only.
+
+{
+    ?photo a foaf:Image ;
+           foaf:depicts ?person .
+    ?person foaf:name ?name .
+} => {
+    ?photo foaf:depicts ?person .
+    ?person foaf:name ?name .
+} .

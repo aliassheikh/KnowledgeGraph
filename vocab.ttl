@@ -1,15 +1,26 @@
 @prefix exvoc: <https://aliassheikh.github.io/KnowledgeGraph/vocab.ttl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 ### Classes
 exvoc:Student a rdfs:Class ;
     rdfs:label "Student" ;
-    rdfs:comment "A person enrolled in an educational program." .
+    rdfs:comment "A person enrolled in an educational program." ;
+    rdfs:subClassOf foaf:Person .
 
 exvoc:Skill a rdfs:Class ;
     rdfs:label "Skill" ;
     rdfs:comment "A technical or academic skill." .
+
+exvoc:Photo a rdfs:Class ;
+    rdfs:label "Photo" ;
+    rdfs:comment "A photograph." ;
+    rdfs:subClassOf foaf:Image .
+
+exvoc:Location a rdfs:Class ;
+    rdfs:label "Location" ;
+    rdfs:comment "A physical place or location where a photo was taken." .
 
 ### Properties
 exvoc:hasSkill a owl:ObjectProperty ;
@@ -22,4 +33,35 @@ exvoc:studentId a owl:DatatypeProperty ;
     rdfs:label "student identifier" ;
     rdfs:comment "A unique identifier for a student." ;
     rdfs:domain exvoc:Student ;
+    rdfs:range rdfs:Literal .
+
+exvoc:title a owl:DatatypeProperty ;
+    rdfs:label "title" ;
+    rdfs:comment "The title or name of a photo." ;
+    rdfs:domain exvoc:Photo ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf foaf:name .
+
+exvoc:hasPhotographer a owl:ObjectProperty ;
+    rdfs:label "has photographer" ;
+    rdfs:comment "Links a photo to its photographer or creator." ;
+    rdfs:domain exvoc:Photo ;
+    rdfs:subPropertyOf foaf:maker .
+
+exvoc:depicts a owl:ObjectProperty ;
+    rdfs:label "depicts" ;
+    rdfs:comment "Links a photo to a person depicted in it." ;
+    rdfs:domain exvoc:Photo ;
+    rdfs:subPropertyOf foaf:depicts .
+
+exvoc:takenAt a owl:ObjectProperty ;
+    rdfs:label "taken at" ;
+    rdfs:comment "Links a photo to the location where it was taken." ;
+    rdfs:domain exvoc:Photo ;
+    rdfs:range exvoc:Location .
+
+exvoc:description a owl:DatatypeProperty ;
+    rdfs:label "description" ;
+    rdfs:comment "A textual description or summary of a photo." ;
+    rdfs:domain exvoc:Photo ;
     rdfs:range rdfs:Literal .
