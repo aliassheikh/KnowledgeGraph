@@ -115,6 +115,52 @@ This allows the FOAF-only query to match all three photos and their depicted per
 
 ---
 
+## How to Test
+
+The Turtle files and the FOAF alignment can be validated automatically using the Python test suite in `tests/test_rdf.py`.
+
+### Prerequisites
+
+```bash
+pip install rdflib pytest
+```
+
+### Run all tests
+
+```bash
+pytest tests/ -v
+```
+
+The suite covers:
+
+| Test group | What is checked |
+|------------|-----------------|
+| `test_vocab_parses` | `vocab.ttl` is valid Turtle with at least one triple |
+| `test_vocab_defines_class` | All four classes are declared (`Student`, `Skill`, `Photo`, `Location`) |
+| `test_vocab_defines_property` | All seven properties are declared |
+| `test_*_subclass/subproperty_of_foaf_*` | FOAF alignment axioms are present |
+| `test_data_parses` | `data.ttl` is valid Turtle with at least one triple |
+| `test_data_student_exists` | All three students exist with correct `foaf:name` |
+| `test_data_skill_exists` | All three skills exist with correct `rdfs:label` |
+| `test_data_location_exists` | All three locations exist with correct `rdfs:label` |
+| `test_data_photo_has_title` | All three photos exist with correct `exvoc:title` |
+| `test_photos_all_have_required_properties` | Every photo has title, photographer, depicts, takenAt, and description |
+| `test_combined_*` | The combined graph contains the subClassOf/subPropertyOf triples the EYE reasoner needs |
+
+Tests run automatically on every push via the [GitHub Actions workflow](.github/workflows/test.yml).
+
+### Test the N3 reasoning with EYE
+
+To run the reasoning query from Part 3 locally, install the [EYE reasoner](https://github.com/eyereasoner/eye) and execute:
+
+```bash
+eye --nope --turtle vocab.ttl --turtle data.ttl --query lab5-photos-query.n3
+```
+
+The `--nope` flag limits output to only the query conclusions. You should see six inferred triples — one for each (photo, depicted-person) pair — using only FOAF terms.
+
+---
+
 ## Tasks - PART 4: Reflection
 
 ### Question 1: What does the reasoner infer, and why does it work?
