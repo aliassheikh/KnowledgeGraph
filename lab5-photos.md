@@ -149,6 +149,43 @@ The suite covers:
 
 Tests run automatically on every push via the [GitHub Actions workflow](.github/workflows/test.yml).
 
+### Test the live web endpoints
+
+`tests/test_web.py` makes real HTTP requests to the published GitHub Pages URLs and verifies:
+
+| Test | What is checked |
+|------|-----------------|
+| `test_vocab_http_ok` | `GET vocab.ttl` returns HTTP 200 |
+| `test_vocab_content_type` | Response `Content-Type` contains `text/turtle` |
+| `test_vocab_cors_header` | `Access-Control-Allow-Origin: *` is present |
+| `test_vocab_parses_as_turtle` | Response body is valid Turtle |
+| `test_live_vocab_defines_class` | All four classes present in the live file |
+| `test_live_vocab_defines_property` | All seven properties present in the live file |
+| `test_live_vocab_foaf_alignment` | FOAF subClassOf/subPropertyOf axioms present in the live file |
+| `test_data_http_ok` | `GET data.ttl` returns HTTP 200 |
+| `test_data_content_type` | Response `Content-Type` contains `text/turtle` |
+| `test_data_cors_header` | `Access-Control-Allow-Origin: *` is present |
+| `test_data_parses_as_turtle` | Response body is valid Turtle |
+| `test_live_data_has_three_*` | Expected number of students, photos, skills, and locations in live data |
+
+All web tests are marked `network` so they can be skipped when running offline:
+
+```bash
+# Run only local tests (no network needed)
+pytest tests/test_rdf.py -v
+
+# Run only live-URL tests
+pytest tests/test_web.py -v
+
+# Run everything; web tests auto-skip if the network is unreachable
+pytest tests/ -v
+
+# Explicitly skip all network tests
+pytest tests/ -v -m "not network"
+```
+
+The GitHub Actions `test-web` job runs the live-URL tests automatically after every push so any divergence between the local files and what is actually served is caught immediately.
+
 ### Test the N3 reasoning with EYE
 
 To run the reasoning query from Part 3 locally, install the [EYE reasoner](https://github.com/eyereasoner/eye) and execute:

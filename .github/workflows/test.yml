@@ -6,6 +6,7 @@ on:
   pull_request:
 
 jobs:
+  # ── Local-file tests (no network needed) ──────────────────────────────────
   test:
     runs-on: ubuntu-latest
     permissions:
@@ -21,5 +22,24 @@ jobs:
       - name: Install dependencies
         run: pip install rdflib pytest
 
-      - name: Run RDF tests
-        run: pytest tests/ -v
+      - name: Run local RDF tests
+        run: pytest tests/test_rdf.py -v
+
+  # ── Live-URL tests against the GitHub Pages endpoints ─────────────────────
+  test-web:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install rdflib pytest
+
+      - name: Run live-URL tests
+        run: pytest tests/test_web.py -v
