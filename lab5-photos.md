@@ -113,6 +113,36 @@ This allows the FOAF-only query to match all three photos and their depicted per
 | `ex:photoCampus` | `ex:me` | "Ali" |
 | `ex:photoCampus` | `ex:studentB` | "Student B" |
 
+### Querying your and other students' data
+
+The same query works over any number of datasets simultaneously. The EYE
+reasoner accepts multiple `--turtle` arguments, so you simply add another
+student's published Turtle file alongside your own:
+
+```bash
+eye --nope \
+    --turtle vocab.ttl \
+    --turtle data.ttl \
+    --turtle https://example-student.github.io/KnowledgeGraph/data.ttl \
+    --query lab5-photos-query.n3
+```
+
+This works **without any changes to `data.ttl`** because:
+
+1. The FOAF alignment declared in `vocab.ttl` lifts all `exvoc:Photo` instances
+   to `foaf:Image` and all `exvoc:depicts` triples to `foaf:depicts` through
+   RDFS entailment — for every dataset that was built using this vocabulary.
+2. If the other student's dataset also uses FOAF predicates directly
+   (`foaf:depicts`, `foaf:name`, etc.), those triples already satisfy the query
+   pattern and are matched without further inference.
+3. The N3 query pattern `{ ?photo a foaf:Image ; foaf:depicts ?person . ?person foaf:name ?name . }`
+   is vocabulary-agnostic: it matches any photo from any dataset that the
+   reasoner can prove is a `foaf:Image` with a `foaf:depicts` link.
+
+In other words, FOAF acts as a **common language** — once every student's
+ontology is aligned to FOAF, a single generic query can retrieve photos and
+depicted persons from all of them in one pass.
+
 ---
 
 ## How to Test
