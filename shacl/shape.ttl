@@ -10,5 +10,5 @@
 @prefix op-country: <http://publications.europa.eu/resource/authority/country/>.
 
 ex:PersonShape a sh:NodeShape;
-  sh:targetClass person:Person;
+  sh:targetClass person:Person .
 # Define the rest of your SHACL shape here
