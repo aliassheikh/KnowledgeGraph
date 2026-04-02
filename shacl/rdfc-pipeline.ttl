@@ -54,7 +54,7 @@
   rdfc:outgoing <validLdesMembers>;
   rdfc:report <shaclReport>;
   rdfc:validationIsFatal false;
-  rdfc:mime "application/n-triples".
+  rdfc:mime "text/turtle".
 
 # Processor to log the valid LDES members
 <logMembers> a rdfc:LogProcessorJs;
