@@ -69,6 +69,7 @@ ex:AddressShape a sh:NodeShape;
     sh:minCount 1;
     sh:maxCount 1;
     sh:nodeKind sh:Literal
+    # plain xsd:string or untyped literal allowed for address strings
   ];
 
   sh:property [

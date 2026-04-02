@@ -126,7 +126,6 @@ app.get('/ldes/:fragment', async (req, res) => {
 
     } else {
         res.status(404).send('Not found');
-        return;
     }
 });
 
@@ -136,7 +135,9 @@ app.listen(port, () => {
 });
 
 // Function to monitor the data folder and refresh the state array
-fs.watch(path.join(__dirname, 'data'), updateState);
+fs.watch(path.join(__dirname, 'data'), (event, filename) => {
+    updateState().catch(err => console.error('Error updating state:', err));
+});
 
 // Function to update the state array
 async function updateState() {
