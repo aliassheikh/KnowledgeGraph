@@ -21,13 +21,7 @@ const fragments = new Map();
 // Redirect to the first fragment (a.k.a tree:view)
 app.get('/ldes', (req, res) => {
     const sortedFragments = Array.from(fragments.values()).sort((a, b) => a.lastModified - b.lastModified);
-
-    // Handle trailing slash
-    const redirectPath = req.url.endsWith('/')
-        ? req.url + sortedFragments[0].name
-        : req.url + '/' + sortedFragments[0].name
-
-    res.redirect(redirectPath);
+    res.redirect(`/ldes/${sortedFragments[0].name}`);
 });
 
 // Route handler for a specific fragment
